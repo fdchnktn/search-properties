@@ -1,0 +1,39 @@
+<div class="ui-g">
+  <div class="ui-g-2">
+    <app-filter (onUpdateFilter)="updateFilterAndRequest($event)"></app-filter>
+  </div>
+
+  <div class="ui-g-10">
+    <app-search (onSendCityForSearch)="onSendCityForSearch($event)"></app-search>
+
+    <div *ngIf="!loaded" class="spinner">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+
+    <div *ngIf="loaded">
+      <p-dataList [emptyMessage]="emptyMessage" [value]="properties" [paginator]="pagination" [rows]="9" [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords">
+        <p-header>
+          {{totalRecords}} properties
+        </p-header>
+          <ng-template  let-res pTemplate="item">
+            <div class="ui-g-12">
+              <div class="ui-g-4">
+                <img style="width: 100%" [src]="res['img_url']">
+              </div>
+              <div class="ui-g-6">
+                <h4> {{res['title']}} </h4>
+                <h4> Price {{res['price_formatted']}} </h4>
+                <p> {{res['property_type']}} for {{res['listing_type']}} </p>
+                <p> Baths : {{res['bathroom_number']}} Beds: {{res['bedroom_number']}}</p>
+              </div>
+              <button pButton type="button" (click)="addToFavourites(res)" label="Add to Favourites"></button>
+            </div>
+            <div class="ui-g-12">
+              <hr>
+            </div>
+          </ng-template>
+        <hr>
+      </p-dataList>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="update(form)">
+  <p>Refine</p>
+  <p-selectButton [options]="listingTypes" formControlName="listingType"></p-selectButton>
+  <p>Sort by</p>
+  <p-dropdown [options]="sorts" formControlName="sort"></p-dropdown>
+  <p>Bedrooms</p>
+  <p-selectButton [options]="beds" formControlName="beds" [multiple]=true></p-selectButton>
+  <p>Property type</p>
+  <p-selectButton [options]="propertyTypes" formControlName="property"></p-selectButton>
+  <p>Bathrooms</p>
+  <p-selectButton [options]="bathrooms" formControlName="bathrooms" [multiple]=true ></p-selectButton>
+  <p>Price {{form.controls['price'].value[0] | json}} - {{form.controls['price'].value[1] | json}}</p>
+  <p-slider [animate]="true" [min]="0" [max]="1000000" [range]="true" formControlName="price"></p-slider>
+</form>
+
+
+

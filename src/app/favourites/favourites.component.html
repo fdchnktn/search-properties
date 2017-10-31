@@ -1,0 +1,39 @@
+<p-growl [value]="message"></p-growl>
+<p-confirmDialog></p-confirmDialog>
+
+<p-dataGrid [value]="favouriteProperties">
+  <p-header>
+    Favourite properties
+  </p-header>
+  <ng-template let-property pTemplate="item">
+    <div class="ui-g-12 ui-md-3">
+      <p-panel>
+        <p-header class="ui-g">
+          <span class="ui-panel-title ui-g">{{property['short_title']}}</span>
+        </p-header>
+
+        <img [src]="property['img_url']" width="200px">
+        <h4> Price {{property['price_formatted']}} </h4>
+        <p> {{property['property_type']}} for {{property['listing_type']}} </p>
+        <p> Baths : {{property['bathroom_number']}}</p>
+        <p> Beds: {{property['bedroom_number']}}</p>
+        <hr class="ui-widget-content" style="border-top:0">
+        <div class="ui-g">
+          <i class="fa fa-search ui-g-3 ui-g-offset-2" (click)="selectProperty(property)" style="cursor:pointer"></i>
+          <i class="fa fa-trash ui-g-3 ui-g-offset-3" (click)="confirmDelete(property)"></i>
+        </div>
+      </p-panel>
+    </div>
+  </ng-template>
+</p-dataGrid>
+
+<p-dialog class="ui-g-6 ui-g-offset-3" header="Property Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" (onAfterHide)="onDialogHide()">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad" *ngIf="selectedProperty">
+    <div class="ui-grid-col-12" style="text-align:center"><img [src]="selectedProperty['img_url']"></div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-6">Price: {{selectedProperty['price_formatted']}}</div>
+      <div class="ui-grid-col-6">Type: {{selectedProperty['listing_type']}}</div>
+    </div>
+  </div>
+</p-dialog>
+

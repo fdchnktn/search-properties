@@ -1,0 +1,11 @@
+<p-panel class="ui-g-6 ui-g-offset-3" header="Select Country and City">
+  <app-search></app-search>
+
+  <div class="card-block">
+    <h4 class="card-title">Recent searches</h4>
+    <hr>
+    <p *ngFor="let search of lastCitySearches" (click)="saveSelectedCity(search)" class="card-text" routerLink="/property">
+      {{search.name}}
+    </p>
+  </div>
+</p-panel>

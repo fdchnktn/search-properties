@@ -1,0 +1,7 @@
+<p-dropdown [options]="countries" [formControl]="currentCountry"></p-dropdown>
+<p-autoComplete [(ngModel)]="selectedCity" [suggestions]="suggestionCities" (completeMethod)="filterCities($event)"
+                field="name" [size]="30"  placeholder="City" [minLength]="1">
+</p-autoComplete>
+<button (click)="saveSearchCity(selectedCity); sendCityForSearch(selectedCity)" routerLink="/property" label="Search" pButton>
+</button>
+

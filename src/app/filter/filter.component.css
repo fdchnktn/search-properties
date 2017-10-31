@@ -1,0 +1,8 @@
+:host /deep/ .ui-button.ui-widget.ui-state-default.ui-button-text-only {
+  width: 50%;
+}
+
+:host /deep/ .ui-selectbutton.ui-buttonset.ui-widget.ui-corner-all,
+:host /deep/ .ui-button.ui-widget.ui-state-default.ui-button-text-only.fill-width{
+  width: 100%;
+}
