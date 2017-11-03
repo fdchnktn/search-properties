@@ -41,7 +41,6 @@ export class SearchComponent implements OnInit {
       .valueChanges
       .subscribe(countryCode => {
         this.citiesOfCurrentCountry = this.getCitiesOfCurrentCountry(allCities, countryCode);
-        console.log(this.currentCountry);
       });
   }
 
@@ -52,7 +51,7 @@ export class SearchComponent implements OnInit {
       : 'GB';
   }
 
-  filterCities(event) {
+  public filterCities(event) {
     const query = event.query;
     this.suggestionCities = this.getSuggestionCities(this.citiesOfCurrentCountry, query);
   }
@@ -69,28 +68,30 @@ export class SearchComponent implements OnInit {
   }
 
   public saveSearchCity(city: ICity) {
-    let latestSearches: ICity[] = this.localStorageService.get('latestSearches');
-    if (!this.searchBefore(latestSearches, city)) {
-      if (latestSearches === null) {
-        latestSearches = [city];
-      } else {
-        latestSearches.push(city);
-      }
+    const searches: ICity[] =  this.localStorageService.get('latestSearches');
+    let latestSearches: ICity[] = [];
+
+    if (searches) {
+      latestSearches = searches;
     }
+
+    if (!this.searchBefore(latestSearches, city)) {
+      latestSearches.push(city);
+    }
+
     if (latestSearches.length >= 6) {
       latestSearches.shift();
     }
+
     this.localStorageService.set('latestSearches', latestSearches);
     this.localStorageService.set('cityForSearch', city);
   }
 
 
   private searchBefore(latestSearches: ICity[], city: ICity) {
-    if (latestSearches) {
-      for (let index = 0; index < latestSearches.length; index++) {
-        if (this.citiesEqual(latestSearches[index], city)) {
-          return true;
-        }
+    for (let index = 0; latestSearches && index < latestSearches.length; index++) {
+      if (this.citiesEqual(latestSearches[index], city)) {
+        return true;
       }
     }
     return false;
@@ -100,4 +101,4 @@ export class SearchComponent implements OnInit {
     return firstCity.name === secondCity.name && firstCity.country === firstCity.country;
   }
 
-  }
+}

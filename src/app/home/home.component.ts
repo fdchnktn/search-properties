@@ -14,8 +14,10 @@ export class HomeComponent implements OnInit {
   constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit() {
-    this.lastCitySearches = this.localStorageService.get('latestSearches');
-    this.lastCitySearches.reverse();
+    const lastSearches: ICity[] = this.localStorageService.get('latestSearches');
+    if (lastSearches) {
+      this.lastCitySearches = lastSearches.reverse();
+    }
   }
 
   saveSelectedCity(city: ICity) {

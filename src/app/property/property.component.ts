@@ -103,8 +103,8 @@ export class PropertyComponent implements OnInit {
     this.getDataFromServer(currentUrl, options);
   }
 
-  private getCityFromLocalStorage() {
-    return <ICity>this.localStorageService.get('cityForSearch');
+  private getCityFromLocalStorage(): ICity {
+    return this.localStorageService.get('cityForSearch');
   }
 
   private identifyUrl(code: string) {
@@ -150,8 +150,6 @@ export class PropertyComponent implements OnInit {
   private isFavourite(favourites: any[], property: any) {
     for (let index = 0; index < favourites.length; index++) {
       if (favourites[index]['lister_url'] === property['lister_url']) {
-        console.log(favourites[index]['lister_url']);
-        console.log(property['lister_url']);
         return true;
       }
     }

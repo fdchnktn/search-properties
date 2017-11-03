@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent} from '../home/home.component';
-import {PropertyComponent} from '../property/property.component';
-import {FavouritesComponent} from '../favourites/favourites.component';
+import { PropertyComponent } from '../property/property.component';
+import { FavouritesComponent } from '../favourites/favourites.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },

@@ -6,11 +6,7 @@
   <div class="ui-g-10">
     <app-search (onSendCityForSearch)="onSendCityForSearch($event)"></app-search>
 
-    <div *ngIf="!loaded" class="spinner">
-      <p-progressSpinner></p-progressSpinner>
-    </div>
-
-    <div *ngIf="loaded">
+    <div *ngIf="loaded; else spinner">
       <p-dataList [emptyMessage]="emptyMessage" [value]="properties" [paginator]="pagination" [rows]="9" [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords">
         <p-header>
           {{totalRecords}} properties
@@ -35,5 +31,11 @@
         <hr>
       </p-dataList>
     </div>
+
+    <ng-template #spinner>
+      <div class="spinner">
+        <p-progressSpinner></p-progressSpinner>
+      </div>
+    </ng-template>
   </div>
 </div>

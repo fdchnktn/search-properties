@@ -9,14 +9,6 @@ import { MenuItem } from 'primeng/primeng';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-  language = new FormControl();
-
-  languages: SelectItem[] = [
-    {label: 'English', value: 'en'},
-    {label: 'Germany', value: 'de'},
-    {label: 'Spain', value: 'es'}
-  ];
-
   items: MenuItem[] = [
     {label: 'Home', routerLink: ['/home']},
     {label: 'Property', routerLink: ['/property']},

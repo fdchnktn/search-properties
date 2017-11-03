@@ -19,21 +19,18 @@ export class FavouritesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.favouriteProperties = this.localStorageService.get('favourites');
-
     this.makeShortTitleForProperties();
   }
 
   private makeShortTitleForProperties() {
-    for (let index = 0; index < this.favouriteProperties.length; index++) {
+    for (let index = 0; this.favouriteProperties && index < this.favouriteProperties.length; index++) {
       this.favouriteProperties[index]['short_title'] = this.makeShortTitle(this.favouriteProperties[index]['title']);
     }
   }
 
-  private makeShortTitle(title) {
-    let short = title.split('');
-    short.splice(38, title.length - 38, '...');
-    short = short.join('');
-    return short;
+  private makeShortTitle(...title) {
+    title.splice(38, title.length - 38, '...');
+    return title.join('');
   }
 
   public deleteFromFavourites(property) {
