@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { ICity } from '../icity';
-import { servers } from '../app-const.servers';
-import { HttpService } from '../http.service';
+import { ICity } from '../interfaces/icity';
+import { servers } from '../app-const/app-const.servers';
+import { HttpService } from '../services/http.service';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -51,9 +51,13 @@ export class PropertyComponent implements OnInit {
 
   public loadData(event) {
     window.scrollTo(0, 0);
-    const page = event.first / event.rows + 1;
+    const page = calculatePage(event);
     const options = this.updatePageInOptions(page);
     this.getDataFromServer(this.currentUrl, options);
+
+    function calculatePage(e){
+      return e.first / e.rows + 1;
+    }
   }
 
   private updatePageInOptions(page: number) {
@@ -61,7 +65,7 @@ export class PropertyComponent implements OnInit {
     return this.options;
   }
 
-  updateFilterAndRequest(filter) {
+  public updateFilterAndRequest(filter) {
     const options = this.updateOptions(filter);
     this.getDataFromServer(this.currentUrl, options);
   }

@@ -1,4 +1,4 @@
-import { IServer } from './iserver';
+import { IServer } from '../interfaces/iserver';
 
 export const servers: IServer[] = [
   {

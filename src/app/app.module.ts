@@ -29,8 +29,8 @@ import { ProgressSpinnerModule } from 'primeng/primeng';
 import { AutoCompleteModule } from 'primeng/primeng';
 import { DropdownModule } from 'primeng/primeng';
 
-import { HttpService } from './http.service';
-import { CitiesService } from './cities.service';
+import { HttpService } from './services/http.service';
+import { CitiesService } from './services/cities.service';
 
 @NgModule({
   declarations: [

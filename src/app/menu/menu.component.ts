@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { SelectItem } from 'primeng/primeng';
-import { MenuItem } from 'primeng/primeng';
+import {Component } from '@angular/core';
+import { items } from '../app-const/app-const.menu';
 
 @Component({
   selector: 'app-menu',
@@ -9,9 +7,5 @@ import { MenuItem } from 'primeng/primeng';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
-  items: MenuItem[] = [
-    {label: 'Home', routerLink: ['/home']},
-    {label: 'Property', routerLink: ['/property']},
-    {label: 'Favourites', routerLink: ['/favourites']}
-  ];
+  public items = items;
 }

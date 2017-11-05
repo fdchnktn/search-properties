@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { ICity } from '../icity';
+import { ICity } from '../interfaces/icity';
 
 @Component({
   selector: 'app-home',

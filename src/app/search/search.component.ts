@@ -1,9 +1,9 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import { ICity } from '../icity';
-import { countries } from '../app-const.countries';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ICity } from '../interfaces/icity';
+import { countries } from '../app-const/app-const.countries';
 import { FormControl } from '@angular/forms';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { CitiesService } from '../cities.service';
+import { CitiesService } from '../services/cities.service';
 
 @Component({
   selector: 'app-search',

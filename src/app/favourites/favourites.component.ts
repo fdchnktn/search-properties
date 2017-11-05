@@ -1,6 +1,6 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LocalStorageService } from 'angular-2-local-storage';
-import { ConfirmationService, Message} from 'primeng/primeng';
+import { ConfirmationService, Message } from 'primeng/primeng';
 
 @Component({
   selector: 'app-favourites',

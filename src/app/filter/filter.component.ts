@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Inject, OnInit, Output} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import { listingTypes, bathrooms, beds, propertyTypes, sorts } from '../app-const.filters-fields';
+import { FormBuilder, FormGroup} from '@angular/forms';
+import { listingTypes, bathrooms, beds, propertyTypes, sorts } from '../app-const/app-const.filters-fields';
 
 @Component({
   selector: 'app-filter',
